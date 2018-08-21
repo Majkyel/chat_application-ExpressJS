@@ -15,7 +15,7 @@ class UsersService {
         this.users = [user, ...this.users];       
     }
     
-    removeUsers(userId) {
+    removeUser(userId) {
         this.users = this.users.filter(user => user.id !== userId);
     }
 }
