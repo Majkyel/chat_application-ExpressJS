@@ -43,6 +43,6 @@ io.on('connection', function(socket) {
     });
 });
 
-app.listen(3000, function(req, res) {
+app.listen(3000, function() {
     console.log('App listening on *:3000');
 });
