@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {hot} from 'react-hot-loader';
 import io from 'socket.io-client';
 
