@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {hot} from 'react-hot-loader';
 import io from 'socket.io-client';
+import uuid from 'uuid';
 
 import styles from './App.css';
 import MessageForm from './MessageForm';
@@ -27,6 +28,11 @@ class App extends Component {
         socket.on('update', ({users}) => this.chatUpdate(users));
     }
     
+    componentWillUnmount() {
+        socket.removeListener('message', message => this.messageReceive(message));
+        socket.removeListener('update', ({users}) => this.chatUpdate(users));
+    }
+    
     messageReceive(message) {
         const messages = [message, ...this.state.messages];
         this.setState({messages});
@@ -37,6 +43,7 @@ class App extends Component {
     }
     
     handleMessageSubmit(message) {
+        message.id = uuid();
         const messages = [message, ...this.state.messages];
         this.setState({messages});
         socket.emit('message', message);

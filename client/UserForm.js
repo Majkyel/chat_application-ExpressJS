@@ -25,7 +25,7 @@ class UserForm extends Component {
                 <input
                     className={styles.UserInput}
                     placeholder='Write your nickname and press enter'
-                    onChange={e=>this.handleChange(e)}
+                    onChange={e => this.handleChange(e)}
                     value={this.state.name}
                 />
             </form>
